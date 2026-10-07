@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>下班女子的靠北心事｜Girls Talk After Work</title>
+<meta name="description" content="下班了，人生才正要開始靠北。聊職場、感情、旅行，還有人生裡那些不好意思說出口，但大家其實都懂的事。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   資料集中管理處請見檔案最下方 <script> 內的 DATA 物件
+   顏色 / 字體變數如下，要換色只要改這裡
+===================================================== */
+:root{
+  --navy:#16203B;
+  --navy-soft:#232C4B;
+  --cream:#F7F2E8;
+  --cream-2:#EFE6D4;
+  --coral:#EF6155;
+  --gold:#F4C95D;
+  --sky:#8FC1DE;
+  --ink:#16203B;
+  --line: rgba(22,32,59,0.15);
+  --maxw: 1180px;
+  --serif:'Noto Serif TC', serif;
+  --sans:'Noto Sans TC', sans-serif;
+  --display:'Bebas Neue', sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--cream); color:var(--ink);
+  font-family:var(--sans); line-height:1.7; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3{font-family:var(--serif); font-weight:900; margin:0; letter-spacing:-0.01em;}
+a{color:inherit;} img{max-width:100%; display:block;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px;}
+.eyebrow{
+  font-family:var(--display); letter-spacing:.06em; font-size:14px;
+  color:var(--coral);
+}
+.sticker{
+  display:inline-block; background:var(--coral); color:var(--cream);
+  font-size:12px; font-weight:700; padding:4px 12px; border-radius:999px;
+  transform:rotate(-3deg);
+}
+.sticker.gold{background:var(--gold); color:var(--navy);}
+.sticker.sky{background:var(--sky); color:var(--navy);}
+button{font-family:inherit; cursor:pointer;}
+
+.doodle{position:absolute; opacity:.85; pointer-events:none;}
+
+.reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+nav{
+  position:sticky; top:0; z-index:50; background:rgba(247,242,232,0.93);
+  backdrop-filter:blur(8px); border-bottom:2px solid var(--navy);
+}
+nav .wrap{display:flex; align-items:center; justify-content:space-between; padding:14px 20px;}
+.brand{font-family:var(--serif); font-weight:900; font-size:17px; line-height:1.1;}
+.brand small{display:block; font-family:var(--display); font-weight:400; font-size:11px; letter-spacing:.08em; color:var(--coral);}
+.navlinks{display:none; gap:22px; font-size:14px; font-weight:500;}
+.navlinks a{text-decoration:none; position:relative; padding:4px 0;}
+.navlinks a:hover{color:var(--coral);}
+.navtoggle{
+  display:flex; flex-direction:column; gap:4px; background:none; border:none; padding:6px;
+}
+.navtoggle span{width:22px; height:2px; background:var(--navy);}
+.mobilemenu{
+  display:none; flex-direction:column; gap:0; background:var(--cream);
+  border-bottom:2px solid var(--navy);
+}
+.mobilemenu.open{display:flex;}
+.mobilemenu a{
+  padding:14px 20px; text-decoration:none; border-top:1px solid var(--line); font-size:15px; font-weight:500;
+}
+@media(min-width:820px){
+  .navlinks{display:flex;}
+  .navtoggle{display:none;}
+  .mobilemenu{display:none !important;}
+}
+
+.hero{
+  background:var(--navy); color:var(--cream); position:relative; overflow:hidden;
+  padding:64px 0 80px;
+}
+.hero .wrap{position:relative; z-index:2;}
+.hero-eyebrow{font-family:var(--display); font-size:16px; letter-spacing:.1em; color:var(--gold);}
+.hero h1{
+  font-size:clamp(36px,8vw,68px); line-height:1.18; margin-top:10px; color:var(--cream);
+}
+.hero h1 .hl{color:var(--coral);}
+.hero .sub{font-size:17px; margin-top:18px; color:var(--cream); opacity:.9; max-width:44ch;}
+.hero .desc{font-size:14.5px; margin-top:10px; color:#C9CCDA; max-width:52ch;}
+.hero-links{margin-top:30px; display:flex; gap:14px; flex-wrap:wrap;}
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:13px 24px;
+  border-radius:999px; text-decoration:none; font-size:14.5px; font-weight:700; border:2px solid transparent;
+  transition:transform .15s ease;
+}
+.btn:hover{transform:translateY(-2px);}
+.btn.coral{background:var(--coral); color:var(--cream);}
+.btn.outline{border-color:var(--gold); color:var(--gold);}
+.btn.outline-dark{border-color:var(--navy); color:var(--navy);}
+.btn.outline-dark:hover{background:var(--navy); color:var(--cream);}
+.hero-doodles{position:absolute; inset:0; z-index:1;}
+.hero-grid{display:grid; grid-template-columns:1fr; gap:36px; align-items:center;}
+.hero-visual{
+  aspect-ratio:1/1; max-width:300px; width:100%; margin:0 auto; position:relative;
+}
+.hero-visual img{display:none; width:100%; height:100%; object-fit:contain;}
+.hero-visual .ph{
+  width:100%; height:100%; border:2px dashed var(--gold); border-radius:14px;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  color:#C9CCDA; font-size:12.5px; padding:16px; line-height:1.6;
+}
+@media(min-width:820px){
+  .hero{padding:96px 0 110px;}
+  .hero-grid{grid-template-columns:1.2fr 0.9fr; gap:50px;}
+  .hero-visual{max-width:380px; order:2;}
+}
+
+section{padding:64px 0;}
+.section-head{margin-bottom:34px;}
+.section-head h2{font-size:clamp(26px,4vw,38px); margin-top:8px;}
+.section-head p{color:#5A5468; font-size:14.5px; margin-top:8px; max-width:50ch;}
+
+.card-grid{display:grid; grid-template-columns:1fr; gap:22px;}
+@media(min-width:640px){.card-grid{grid-template-columns:1fr 1fr;}}
+@media(min-width:980px){.card-grid{grid-template-columns:repeat(4,1fr);}}
+.epi-card{
+  background:var(--cream); border:2px solid var(--navy); position:relative;
+  padding:18px; clip-path:polygon(0 0,100% 0,100% 92%,92% 100%,0 100%);
+  transition:box-shadow .2s ease, transform .2s ease;
+}
+.epi-card:hover{box-shadow:7px 7px 0 var(--coral); transform:translate(-3px,-3px);}
+.epi-cover{
+  aspect-ratio:1/1; position:relative; overflow:hidden;
+  background:linear-gradient(150deg,var(--sky),var(--gold)); margin-bottom:14px;
+}
+.epi-cover img{display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.epi-cover .cover-fallback{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-family:var(--display); font-size:13px; color:var(--navy); text-align:center; padding:10px;
+}
+.epi-cat{margin-bottom:10px;}
+.epi-title{font-size:17px; line-height:1.35; margin-bottom:8px; font-weight:700; font-family:var(--serif);}
+.epi-excerpt{font-size:13px; color:#5A5468; margin-bottom:14px;}
+.epi-play{
+  display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--coral);
+  text-decoration:none;
+}
+.epi-play .tri{
+  width:0; height:0; border-top:6px solid transparent; border-bottom:6px solid transparent;
+  border-left:9px solid var(--coral);
+}
+
+.mood-section{background:var(--navy-soft); color:var(--cream);}
+.mood-section .section-head p{color:#C9CCDA;}
+
+
+.cat-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
+@media(min-width:640px){.cat-grid{grid-template-columns:repeat(4,1fr);}}
+.cat-item{
+  background:var(--cream-2); border:2px solid var(--navy); padding:20px 14px;
+  text-align:center; border-radius:10px; font-weight:700; font-size:14px;
+  text-decoration:none; color:var(--ink); display:block; transition:all .2s ease;
+}
+.cat-item:hover{background:var(--coral); color:var(--cream); border-color:var(--coral); transform:translateY(-2px);}
+.cat-item .ic{font-size:26px; margin-bottom:8px;}
+
+.blog-list{max-width:760px;}
+.post-item{border-bottom:1px solid var(--line); padding:26px 0;}
+.post-item:first-child{padding-top:0;}
+.post-meta{display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap;}
+.post-date{font-family:var(--display); color:var(--coral); font-size:13px; letter-spacing:.05em;}
+.post-title{
+  font-size:19px; font-family:var(--serif); font-weight:700; cursor:pointer; margin-bottom:8px;
+  display:flex; align-items:center; gap:8px;
+}
+.post-title:hover{color:var(--coral);}
+.post-title .arrow{transition:transform .2s ease; font-size:14px;}
+.post-title.open .arrow{transform:rotate(90deg);}
+.post-excerpt{color:#5A5468; font-size:14px;}
+.post-image{width:100%; max-height:420px; object-fit:cover; border:2px solid var(--navy); margin-top:14px; border-radius:4px;}
+.post-full{
+  display:none; margin-top:16px; font-size:14.5px; line-height:1.9; color:var(--ink);
+  border-left:3px solid var(--coral); padding-left:16px;
+}
+.post-full.open{display:block;}
+
+.reel-feature-grid{display:grid; grid-template-columns:1fr; gap:24px;}
+@media(min-width:640px){.reel-feature-grid{grid-template-columns:repeat(3,1fr);}}
+.reel-feature-card{
+  background:var(--cream); border:2px solid var(--navy); overflow:hidden;
+  display:flex; flex-direction:column; transition:box-shadow .2s ease, transform .2s ease;
+}
+.reel-feature-card:hover{box-shadow:7px 7px 0 var(--coral); transform:translate(-3px,-3px);}
+.reel-feature-cover{aspect-ratio:9/16; position:relative; overflow:hidden; background:var(--navy);}
+.reel-feature-cover img{display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.reel-feature-cover .cover-fallback{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  color:#C9CCDA; font-size:12.5px; text-align:center; padding:14px; line-height:1.6;
+}
+.reel-feature-body{padding:16px;}
+.reel-feature-title{font-size:16px; font-weight:700; font-family:var(--serif); margin:8px 0 6px;}
+.reel-feature-blurb{font-size:13px; color:#5A5468; margin-bottom:14px;}
+.reel-feature-btn{
+  display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:700;
+  color:var(--coral); text-decoration:none;
+}
+
+.zine{background:var(--cream-2);}
+.zine-grid{display:grid; grid-template-columns:1fr; gap:22px;}
+@media(min-width:760px){.zine-grid{grid-template-columns:repeat(3,1fr);}}
+.zine-item{border-left:3px solid var(--coral); padding-left:16px;}
+.zine-item .k{font-family:var(--display); font-size:14px; color:var(--coral); letter-spacing:.05em;}
+.zine-item h3{font-size:18px; margin-top:6px;}
+.zine-item p{font-size:13.5px; color:#5A5468; margin-top:6px;}
+
+.about{background:var(--navy); color:var(--cream);}
+.about-grid{display:grid; grid-template-columns:1fr; gap:36px; align-items:center;}
+@media(min-width:820px){.about-grid{grid-template-columns:0.9fr 1.3fr;}}
+.about-photo{
+  aspect-ratio:4/5; background:linear-gradient(160deg,#232C4B,#3A4370);
+  border:2px solid var(--gold); position:relative; overflow:hidden; border-radius:10px;
+}
+.about-photo img{display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+.about-photo .ph-fallback{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  color:#C9CCDA; font-size:13px; text-align:center; padding:20px; line-height:1.6;
+}
+.about h2{color:var(--cream); font-size:clamp(24px,3.6vw,32px); line-height:1.4;}
+.about .quote{color:var(--gold); font-family:var(--display); font-size:15px; margin-bottom:10px;}
+.about p{color:#C9CCDA; font-size:15px; margin-top:16px; max-width:56ch;}
+.about p.last{color:var(--cream); font-weight:700;}
+
+.collab-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:12px;}
+@media(min-width:640px){.collab-grid{grid-template-columns:repeat(4,1fr);}}
+.collab-item{
+  background:var(--cream); border:2px solid var(--navy); padding:16px; text-align:center;
+  font-size:13.5px; font-weight:700; border-radius:8px;
+}
+.social-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-bottom:32px;}
+@media(min-width:640px){.social-grid{grid-template-columns:repeat(5,1fr);}}
+.social-btn{
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  background:var(--cream); border:2px solid var(--navy); padding:16px 12px;
+  border-radius:8px; font-size:14px; font-weight:700; text-decoration:none; color:var(--ink);
+  transition:all .2s ease;
+}
+.social-btn:hover{background:var(--coral); color:var(--cream); border-color:var(--coral); transform:translateY(-2px);}
+
+footer{background:var(--navy); color:#C9CCDA; padding:44px 0 30px;}
+.footer-grid{display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; border-bottom:1px solid rgba(255,255,255,.12); padding-bottom:24px;}
+.footer-brand{font-family:var(--serif); color:var(--cream); font-size:18px; font-weight:900;}
+.footer-links{display:flex; gap:18px; flex-wrap:wrap; font-size:13.5px;}
+.footer-links a{text-decoration:none;}
+.footer-links a:hover{color:var(--coral);}
+.copyright{margin-top:18px; font-size:12px; opacity:.7;}
+
+.fab{
+  position:fixed; right:18px; bottom:18px; z-index:60;
+  background:var(--coral); color:var(--cream); border:none; border-radius:999px;
+  padding:14px 20px; font-weight:700; font-size:13.5px; box-shadow:0 6px 18px rgba(22,32,59,0.35);
+  display:flex; align-items:center; gap:8px;
+}
+.fab-menu{
+  position:fixed; right:18px; bottom:80px; z-index:60; background:var(--navy); border:2px solid var(--gold);
+  border-radius:14px; padding:10px; display:none; flex-direction:column; min-width:180px;
+  box-shadow:0 10px 24px rgba(0,0,0,0.3);
+}
+.fab-menu.open{display:flex;}
+.fab-menu button{
+  background:none; border:none; color:var(--cream); text-align:left; padding:10px 12px;
+  font-size:14px; border-radius:8px;
+}
+.fab-menu button:hover{background:var(--navy-soft); color:var(--gold);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">下班女子的靠北心事<small>GIRLS TALK AFTER WORK</small></div>
+    <div class="navlinks">
+      <a href="#home">首頁</a>
+      <a href="#podcast">Podcast</a>
+      <a href="#mood">五分鐘靠北</a>
+      <a href="#blog">文章</a>
+      <a href="#reels">IG 精選</a>
+      <a href="#about">關於阿血</a>
+      <a href="#collab">合作</a>
+    </div>
+    <button class="navtoggle" onclick="document.getElementById('mmenu').classList.toggle('open')" aria-label="選單">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobilemenu" id="mmenu">
+    <a href="#home">首頁</a>
+    <a href="#podcast">Podcast</a>
+    <a href="#mood">五分鐘靠北</a>
+    <a href="#blog">文章</a>
+    <a href="#reels">IG 精選</a>
+    <a href="#about">關於阿血</a>
+    <a href="#collab">合作</a>
+  </div>
+</nav>
+
+<header class="hero" id="home">
+  <svg class="hero-doodles" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="700" cy="80" r="60" fill="none" stroke="#F4C95D" stroke-width="2" opacity="0.5"/>
+    <path d="M40 420 Q 90 380 140 420 T 240 420" stroke="#8FC1DE" stroke-width="3" fill="none" opacity="0.5"/>
+    <path d="M620 380 L 660 340 M660 380 L620 340" stroke="#EF6155" stroke-width="3" opacity="0.4"/>
+    <rect x="60" y="60" width="26" height="20" rx="3" fill="none" stroke="#F4C95D" stroke-width="2" opacity="0.4"/>
+  </svg>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow">GIRLS TALK AFTER WORK</div>
+      <h1>下班女子的<br>靠北<span class="hl">心事</span></h1>
+      <p class="sub">下班了，人生才正要開始靠北。</p>
+      <p class="desc">上班已經夠累了，下班聊點真的。聊職場、感情、旅行，還有人生裡那些不好意思說出口，但大家其實都懂的事。</p>
+      <div class="hero-links">
+        <a class="btn coral" href="#podcast">▶ 收聽最新一集</a>
+        <a class="btn outline" href="#mood">五分鐘陪你靠北一下</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="images/hero-brand.png" alt="Podcast 品牌視覺" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+      <div class="ph">〔品牌視覺區〕<br>可放 Podcast Logo／似顏繪人物／主視覺插畫<br>檔名：images/hero-brand.png</div>
+    </div>
+  </div>
+</header>
+
+<section id="podcast">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">NOW TRENDING</div>
+      <h2>最近大家都在靠北什麼？</h2>
+      <p>不只是節目編號，是那些你我都遇過的荒謬時刻。</p>
+    </div>
+    <div class="card-grid" id="epiGrid"></div>
+  </div>
+</section>
+
+<section class="mood-section" id="mood">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="color:var(--gold);">5-MIN RECOVERY</div>
+      <h2 style="color:var(--cream);">今天心很累？<br>五分鐘陪你靠北一下。</h2>
+      <p>不想選、不想想，直接進播放清單聽就對了。</p>
+    </div>
+    <div style="text-align:center;">
+      <a class="btn coral" id="moodDirectBtn" href="#" target="_blank" rel="noopener">▶ 立即收聽「五分鐘靠北復健」</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">CATEGORY</div>
+      <h2>挑一個下班的頻道</h2>
+    </div>
+    <div class="cat-grid" id="catGrid"></div>
+  </div>
+</section>
+
+<section id="blog">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">JOURNAL</div>
+      <h2>靠北筆記</h2>
+      <p>想到什麼就寫什麼，不定期更新。點標題展開全文。</p>
+    </div>
+    <div class="blog-list" id="blogList"></div>
+  </div>
+</section>
+
+<section id="reels">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">MORE THAN PODCAST</div>
+      <h2>阿血不只在錄 Podcast。</h2>
+      <p>旅行、咖啡、吉伊卡哇、奇葩同事，還有一些下班後亂七八糟的人生。</p>
+    </div>
+    <div class="reel-feature-grid" id="reelGrid"></div>
+    <div style="text-align:center; margin-top:30px;">
+      <a class="btn outline-dark" id="moreIgBtn" href="#" target="_blank" rel="noopener">看更多 Instagram →</a>
+    </div>
+  </div>
+</section>
+
+<section class="zine" id="zine">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">ADA'S NOTE</div>
+      <h2>阿血最近在幹嘛？</h2>
+    </div>
+    <div class="zine-grid" id="zineGrid"></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo">
+      <img src="images/ada.jpg" alt="Ada／阿血" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+      <div class="ph-fallback">〔請替換為 images/ada.jpg〕<br>建議 4:5，object-fit: cover</div>
+    </div>
+    <div>
+      <div class="quote">一個從部落格年代活到短影音年代的網路老人。</div>
+      <h2>關於 Ada／阿血</h2>
+      <p>白天做設計、網站、社群，下班錄 Podcast、剪影片、旅行、吃東西，偶爾抱怨人生。</p>
+      <p>沒有要教你成功。</p>
+      <p class="last">如果你也覺得「幹，原來不是只有我」，那就好。</p>
+    </div>
+  </div>
+</section>
+
+<section id="collab">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">WORK WITH ADA</div>
+      <h2>合作找阿血</h2>
+    </div>
+
+    <div class="section-head reveal" style="margin-bottom:18px;">
+      <div class="eyebrow">FIND ME</div>
+      <h2 style="font-size:22px;">我的社群平台</h2>
+    </div>
+    <div class="social-grid" id="socialGrid"></div>
+
+    <div class="collab-grid">
+      <div class="collab-item">品牌體驗／開箱</div>
+      <div class="collab-item">Instagram Reels</div>
+      <div class="collab-item">YouTube Shorts</div>
+      <div class="collab-item">Podcast 口播</div>
+      <div class="collab-item">旅遊合作</div>
+      <div class="collab-item">活動主持</div>
+      <div class="collab-item">品牌內容企劃</div>
+      <div class="collab-item">客製方案</div>
+    </div>
+    <div class="hero-links" style="margin-top:28px;">
+      <a class="btn coral" id="collabEmailBtn" href="#">合作洽詢</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">下班女子的靠北心事</div>
+      <div class="footer-links" id="footerSocial"></div>
+    </div>
+    <div class="copyright">© 2026 下班女子的靠北心事・Girls Talk After Work</div>
+  </div>
+</footer>
+
+<button class="fab" id="fabBtn">💬 今天想靠北什麼？</button>
+<div class="fab-menu" id="fabMenu"></div>
+
+<script>
+/* =====================================================
+   SOCIAL_LINKS：所有社群網址集中在這裡管理
+   footer 跟「我的社群平台」都讀這一份，改一次就同步更新
+===================================================== */
+const SOCIAL_LINKS = [
+  { name:"Instagram", url:"https://www.instagram.com/asih4567/" },
+  { name:"YouTube",   url:"https://www.youtube.com/@asih4567" },
+  { name:"Podcast",   url:"https://open.firstory.me/user/girlstalk" },
+  { name:"Facebook",  url:"https://www.facebook.com/asihslife" },
+  { name:"Email",     url:"mailto:asih4567@gmail.com" }
+];
+
+const DATA = {
+  /* Podcast 單集備用內容：Firstory RSS 讀取失敗，或還沒載入完成時顯示。
+     cover 對應 images/podcast-01.jpg ~ 04.jpg，圖片不存在時會自動顯示 placeholder。 */
+  podcastFallback: [
+    { title:"待更新", meta:"待更新", excerpt:"近期內容更新中。", link:"#", cover:"images/podcast-01.jpg" },
+    { title:"待更新", meta:"待更新", excerpt:"近期內容更新中。", link:"#", cover:"images/podcast-02.jpg" },
+    { title:"待更新", meta:"待更新", excerpt:"近期內容更新中。", link:"#", cover:"images/podcast-03.jpg" },
+    { title:"待更新", meta:"待更新", excerpt:"近期內容更新中。", link:"#", cover:"images/podcast-04.jpg" }
+  ],
+  /* 「阿血不只在錄 Podcast」精選 Reels：固定 3 支，自己決定內容，不會自動抓 IG 最新貼文。
+     url 請換成該支 Reel 的實際網址；cover 對應 images/ig-*.jpg。 */
+  featuredReels: [
+    { tag:"生活萌貨", title:"吉伊卡哇短影音", blurb:"萌到不行的日常療癒時刻。",
+      url:"https://www.instagram.com/reel/DZR21yOxmRh/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA==",
+      cover:"images/ig-chiikawa.jpg" },
+    { tag:"下班出去玩", title:"昭和喫茶踩點", blurb:"復古咖啡廳氛圍，下班最療癒的角落。",
+      url:"#", cover:"images/ig-showa-cafe.jpg" },
+    { tag:"上班靠北", title:"奇葩同事語錄", blurb:"上班遇到的荒謬對話，笑到不敢相信是真的。",
+      url:"#", cover:"images/ig-coworker.jpg" }
+  ],
+  /* 文章／靠北筆記：之後要發新文章，直接在這個陣列裡新增一筆物件就好，
+     不用動 HTML。content 可以放完整文章內容（支援簡單 HTML，例如 <br> 或 <b>）。
+     date 請用 YYYY-MM-DD 格式，網站會自動照日期新到舊排序。 */
+  posts: [
+    { date:"2026-01-01", tag:"待更新", title:"待更新", excerpt:"近期內容更新中。", content:"近期內容更新中。", image:"" }
+  ],
+  /* Podcast 分類：真實的 Firstory 播放清單，用在「挑一個下班的頻道」跟右下角浮動選單。
+     要再新增分類，直接在陣列裡加一筆就好。 */
+  categories: [
+    { name:"男女交往",   icon:"💑", url:"https://girlstalk.firstory.cc/episodes?playlist=cliwq21h40alc01vm7s543c8w" },
+    { name:"AA制",       icon:"🧾", url:"https://girlstalk.firstory.cc/episodes?playlist=cliwq2fgv03tc01vo8saqa9eh" },
+    { name:"奇聞軼事",   icon:"👀", url:"https://girlstalk.firstory.cc/episodes?playlist=clm7o2e2j02e101z3ah70fu2s" },
+    { name:"五分鐘靠北復健", icon:"🎧", url:"https://girlstalk.firstory.cc/episodes?playlist=cmotzffzq0d3601w8a9e0a82t" },
+    { name:"屎終如一",   icon:"💩", url:"https://girlstalk.firstory.cc/episodes?playlist=cljwheuyk00og01w4a8ps2unq" },
+    { name:"職場風雲",   icon:"💼", url:"https://girlstalk.firstory.cc/episodes?playlist=clkkp85d1016w01veg4f3a6bh" },
+    { name:"旅遊記事",   icon:"🧳", url:"https://girlstalk.firstory.cc/episodes?playlist=cmbi3mcur12ea01xx8lyqgxm2" }
+  ],
+  /* 阿血最近在幹嘛：請替換成真實的近期分享，沒有的話保留「待更新」 */
+  zineNotes: [
+    { k:"LISTENING", title:"最近在聽", text:"待更新" },
+    { k:"WATCHING",  title:"最近在看", text:"待更新" },
+    { k:"TRAVELING", title:"最近跑去哪", text:"待更新" }
+  ]
+};
+
+/* ---------- Podcast 卡片渲染（Firstory RSS 與備用內容共用） ---------- */
+const epiGrid = document.getElementById('epiGrid');
+function renderEpisodeCards(episodes){
+  epiGrid.innerHTML = "";
+  episodes.forEach(ep=>{
+    const card = document.createElement('div');
+    card.className = 'epi-card reveal in';
+    card.innerHTML = `
+      <div class="epi-cover">
+        <img src="${ep.cover || ''}" alt="" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+        <div class="cover-fallback">封面 Placeholder</div>
+      </div>
+      <div class="epi-cat"><span class="sticker">${ep.meta}</span></div>
+      <div class="epi-title">${ep.title}</div>
+      <div class="epi-excerpt">${ep.excerpt}</div>
+      <a class="epi-play" href="${ep.link}" target="_blank" rel="noopener"><span class="tri"></span> 收聽這集</a>
+    `;
+    epiGrid.appendChild(card);
+  });
+}
+/* 先顯示備用內容，避免 RSS 還沒載完時區塊空白 */
+renderEpisodeCards(DATA.podcastFallback);
+
+/* 透過 Netlify Function 代理讀取 Firstory RSS，成功才覆蓋畫面；失敗就維持備用內容，不報錯、不留白 */
+function stripHtml(html){
+  const tmp = document.createElement('div');
+  tmp.innerHTML = html || "";
+  return (tmp.textContent || tmp.innerText || "").trim();
+}
+function formatPubDate(d){
+  const dt = new Date(d);
+  if(isNaN(dt)) return "最新集數";
+  return dt.toLocaleDateString('zh-TW', {year:'numeric', month:'2-digit', day:'2-digit'}).replace(/\//g,'.');
+}
+fetch('/.netlify/functions/podcast-feed')
+  .then(res=>{ if(!res.ok) throw new Error('feed proxy error'); return res.text(); })
+  .then(xmlText=>{
+    const xml = new DOMParser().parseFromString(xmlText, 'text/xml');
+    if(xml.querySelector('parsererror')) throw new Error('xml parse error');
+    const items = Array.from(xml.querySelectorAll('item')).slice(0,4);
+    if(items.length === 0) throw new Error('no items');
+    const episodes = items.map((item, i)=>{
+      const title = item.querySelector('title')?.textContent?.trim() || "待更新";
+      const link = item.querySelector('link')?.textContent?.trim() || "#";
+      const pubDate = item.querySelector('pubDate')?.textContent || "";
+      let excerpt = stripHtml(item.querySelector('description')?.textContent || "");
+      if(excerpt.length > 60) excerpt = excerpt.slice(0,60) + "…";
+      const itunesImg = item.getElementsByTagName('itunes:image')[0];
+      const fallbackCover = DATA.podcastFallback[i] ? DATA.podcastFallback[i].cover : "";
+      const cover = itunesImg ? itunesImg.getAttribute('href') : fallbackCover;
+      return { title, meta: formatPubDate(pubDate), excerpt: excerpt || "近期內容更新中。", link, cover };
+    });
+    renderEpisodeCards(episodes);
+  })
+  .catch(()=>{ /* RSS 讀取失敗：畫面已經是備用內容，這裡不用再做事 */ });
+
+/* ---------- 「阿血不只在錄 Podcast」精選 Reels 卡片 ---------- */
+const reelGrid = document.getElementById('reelGrid');
+DATA.featuredReels.forEach(r=>{
+  const c = document.createElement('div');
+  c.className = 'reel-feature-card reveal';
+  c.innerHTML = `
+    <div class="reel-feature-cover">
+      <img src="${r.cover}" alt="" onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+      <div class="cover-fallback">封面 Placeholder</div>
+    </div>
+    <div class="reel-feature-body">
+      <span class="sticker gold">${r.tag}</span>
+      <div class="reel-feature-title">${r.title}</div>
+      <div class="reel-feature-blurb">${r.blurb}</div>
+      <a class="reel-feature-btn" href="${r.url}" target="_blank" rel="noopener">看這支 Reel →</a>
+    </div>
+  `;
+  reelGrid.appendChild(c);
+});
+document.getElementById('moreIgBtn').href = SOCIAL_LINKS.find(s=>s.name==='Instagram').url;
+document.getElementById('collabEmailBtn').href = SOCIAL_LINKS.find(s=>s.name==='Email').url;
+
+const zineGrid = document.getElementById('zineGrid');
+DATA.zineNotes.forEach(z=>{
+  const item = document.createElement('div');
+  item.className = 'zine-item reveal';
+  item.innerHTML = `
+    <div class="k">${z.k}</div>
+    <h3>${z.title}</h3>
+    <p>${z.text}</p>
+  `;
+  zineGrid.appendChild(item);
+});
+
+/* ---------- 文章／靠北筆記：依日期新到舊排序，點標題展開全文 ---------- */
+function renderPosts(){
+  const list = document.getElementById('blogList');
+  list.innerHTML = "";
+  const sorted = [...DATA.posts].sort((a,b)=> new Date(b.date) - new Date(a.date));
+  sorted.forEach(p=>{
+    const item = document.createElement('div');
+    item.className = 'post-item reveal';
+    const dt = new Date(p.date);
+    const dateStr = isNaN(dt) ? p.date : dt.toLocaleDateString('zh-TW',{year:'numeric',month:'2-digit',day:'2-digit'}).replace(/\//g,'.');
+    item.innerHTML = `
+      <div class="post-meta">
+        <span class="post-date">${dateStr}</span>
+        <span class="sticker gold">${p.tag}</span>
+      </div>
+      <div class="post-title"><span class="arrow">▸</span> ${p.title}</div>
+      <div class="post-excerpt">${p.excerpt}</div>
+      <div class="post-full">
+        ${p.image ? `<img class="post-image" src="${p.image}" alt="">` : ''}
+        ${p.content}
+      </div>
+    `;
+    const titleEl = item.querySelector('.post-title');
+    const fullEl = item.querySelector('.post-full');
+    titleEl.addEventListener('click', ()=>{
+      titleEl.classList.toggle('open');
+      fullEl.classList.toggle('open');
+    });
+    list.appendChild(item);
+  });
+}
+renderPosts();
+
+/* 社群按鈕：同一份 SOCIAL_LINKS 同時渲染「我的社群平台」跟 footer，避免網址重複寫死。
+   Email 是 mailto:，不加 target="_blank"，點了直接開啟寄信程式；其餘四個開新分頁。 */
+function renderSocialButtons(container, className){
+  SOCIAL_LINKS.forEach(s=>{
+    const a = document.createElement('a');
+    a.href = s.url;
+    if(!s.url.startsWith('mailto:')){
+      a.target = '_blank';
+      a.rel = 'noopener';
+    }
+    a.className = className;
+    a.textContent = s.name;
+    container.appendChild(a);
+  });
+}
+renderSocialButtons(document.getElementById('socialGrid'), 'social-btn');
+renderSocialButtons(document.getElementById('footerSocial'), '');
+
+/* 「五分鐘靠北復健」直接連到該播放清單 */
+const moodCat = DATA.categories.find(c=> c.name === "五分鐘靠北復健");
+if(moodCat) document.getElementById('moodDirectBtn').href = moodCat.url;
+
+/* 「挑一個下班的頻道」分類卡片：讀 DATA.categories 自動產生，點了開新分頁連到播放清單 */
+const catGrid = document.getElementById('catGrid');
+DATA.categories.forEach(c=>{
+  const a = document.createElement('a');
+  a.className = 'cat-item reveal';
+  a.href = c.url;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.innerHTML = `<div class="ic">${c.icon}</div>${c.name}`;
+  catGrid.appendChild(a);
+});
+
+/* 右下角浮動按鈕選單：同樣讀 DATA.categories，不用重複寫一份 */
+const fabBtn = document.getElementById('fabBtn');
+const fabMenu = document.getElementById('fabMenu');
+DATA.categories.forEach(c=>{
+  const btn = document.createElement('button');
+  btn.textContent = `${c.icon} ${c.name}`;
+  btn.addEventListener('click', ()=>{
+    fabMenu.classList.remove('open');
+    window.open(c.url, '_blank', 'noopener');
+  });
+  fabMenu.appendChild(btn);
+});
+fabBtn.addEventListener('click', ()=> fabMenu.classList.toggle('open'));
+
+document.querySelectorAll('.mobilemenu a').forEach(a=>{
+  a.addEventListener('click', ()=> document.getElementById('mmenu').classList.remove('open'));
+});
+
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+</script>
+</body>
+</html>
